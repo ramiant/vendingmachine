@@ -22,27 +22,22 @@ const _items = [{
 }]
 
 export default function generateItems({
-	width: w = 5, // columns
-	height: h = 8, // rows
-	depth: d = 10
+	width: w = 3, // columns
+	height: h = 3, // rows
+	depth: d = 4
 } = {}) {
-	let items = Array(h).fill(Array(w).fill(''));
-	
-	for (let i = 0; i < items.length; i++) {
-		for (let j = 0; j < items[i].length; j++) {
-			let rand = Math.floor(Math.random()*(items.length - 1))
-			console.log(_items[rand].name)
-			items[i][j] = Array(d).fill(_items[rand])
+	let items = [];
+
+	for (let i = 0; i < h; i++) {
+		items.push([]);
+		for (let j = 0; j < w; j++) {
+			items[i].push([])
+			let rand = Math.floor(Math.random()*(_items.length - 1))
+			for (let k = 0; k < d; k++) {
+				items[i][j].push(_items[rand]);
+			}
 		}
 	}
 
-	console.log(items)
-
-	// items.forEach((row, i) => {
-	// 	row.forEach((spring, j) => {
-	// 		console.log(i, j)
-	// 		items[i][j] = Array(d).fill(_items[rand]);
-	// 	})
-	// })
 	return items;
 }

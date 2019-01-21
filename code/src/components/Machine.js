@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Badge from '@material-ui/core/Badge';
 
 const styles = theme => ({
 	button: {
@@ -8,31 +9,40 @@ const styles = theme => ({
 	},
 	keysGroup: {
 
+	},
+	table: {
+		margin: 'auto'
 	}
 })
 
 class Machine extends Component {
 	render() {
 		const { classes, items } = this.props
-		console.log(items);
 		
 		return (
-			<div>
+			<table className={classes.table}>
+				<tbody>
 				{
 					items.map((row, i) => {
 						return (
-							<div key={i}>
+							<tr key={i}>
 								{
 									row.map((spring, j) => {
-										console.log(spring)
-										return <span key={i + j}>{spring[0].name}</span>
+										return (
+											<td key={i + j}>
+												<Badge className={classes.margin} badgeContent={4} color="primary">
+													{spring[0].name}
+												</Badge>
+											</td>
+										);
 									})
 								}
-							</div>
+							</tr>
 						)
 					})
 				}
-			</div>
+				</tbody>
+			</table>
 		)
 	}
 }
