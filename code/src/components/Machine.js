@@ -11,7 +11,15 @@ const styles = theme => ({
 
 	},
 	table: {
-		margin: 'auto'
+		margin: 'auto',
+		marginTop: 20,
+		borderCollapse: 'separate',
+    borderSpacing: '20px 20px'
+	},
+	cellContent: {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center'
 	}
 })
 
@@ -20,7 +28,7 @@ class Machine extends Component {
 		const { classes, items } = this.props
 		
 		return (
-			<table className={classes.table}>
+			<table className={classes.table} border={1}>
 				<tbody>
 				{
 					items.map((row, i) => {
@@ -29,10 +37,13 @@ class Machine extends Component {
 								{
 									row.map((spring, j) => {
 										return (
-											<td key={i + j}>
-												<Badge className={classes.margin} badgeContent={4} color="primary">
-													{spring[0].name}
-												</Badge>
+											<td key={i*items.length + j}>
+												<div className={classes.cellContent}>
+													<sup>{i*items.length + j + 1}</sup>
+													<Badge className={classes.margin} badgeContent={spring.length} color="primary">
+														{spring[0] && <img height={100} width={100} src={spring[0].url} title={spring[0].name}></img> || 'empty'}
+													</Badge>
+												</div>
 											</td>
 										);
 									})

@@ -3,28 +3,16 @@ import Machine from '../components/Machine'
 import { Actions } from '../actions/actions'
 
 
-const mapStateToProps = ({MachineReducer: state}, ownProps) => {
+const mapStateToProps = ({ KeypadReducer: kr, MachineReducer: mr }, ownProps) => {
 	return {
-		items: state.items
+		items: mr.items,
+		credit: kr.credit,
+		productId: kr.productId
 	}
 }
 
 const mapDispatchToProps = dispatch => {
-	return {
-		onKeypadEnter: event => {
-			const value = Number(event.target.innerText)
-			dispatch(Actions.changeInput(value))
-		},
-		onClearKeypad: _ => {
-			dispatch(Actions.clearKeypad())
-		},
-		onRestCredit: _ => {
-			dispatch(Actions.restCredit())
-		},
-		onCreditEnter: credit => {
-			dispatch(Actions.changeCredit(credit))
-		}
-	}
+	return { }
 }
 
 const MachineContainer = connect(
