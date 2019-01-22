@@ -20,6 +20,13 @@ const styles = theme => ({
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center'
+	},
+	empty: {
+		display: 'flex',
+		height: 100,
+		width: 100,
+		flexDirection: 'column',
+		justifyContent: 'center'
 	}
 })
 
@@ -41,7 +48,7 @@ class Machine extends Component {
 												<div className={classes.cellContent}>
 													<sup>{i*items.length + j + 1}</sup>
 													<Badge className={classes.margin} badgeContent={spring.length} color="primary">
-														{spring[0] && <img height={100} width={100} src={spring[0].url} title={spring[0].name}></img> || 'empty'}
+														{spring[0] && <img height={100} width={100} src={spring[0].url} title={spring[0].name}></img> || <span className={classes.empty}>empty</span>}
 													</Badge>
 												</div>
 											</td>
