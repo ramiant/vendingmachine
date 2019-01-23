@@ -32,7 +32,7 @@ export default function generateItems({
 	width: w = 4, // columns
 	height: h = 8, // rows
 	depth: d = 4,
-	variableDepth = false
+	variableDepth = true
 } = {}) {
 	let items = [];
 
